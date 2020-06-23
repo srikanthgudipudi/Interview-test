@@ -1,0 +1,25 @@
+<div style="padding-left: 30%;">
+    <div>
+        <mat-form-field>
+            <mat-label>Region</mat-label>
+            <mat-select (selectionChange)="onRegionChange($event.value)">
+                <mat-option value='asia'>Asia</mat-option>
+                <mat-option value='europe'>Europe</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field *ngIf="Countries">
+            <mat-label>Country</mat-label>
+            <mat-select (selectionChange)="countrySelection($event.value)">
+                <mat-option *ngFor="let country of Countries" value="{{country.name}}">{{country.name}}</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+    </div>
+    <div>
+        <app-component2 [receivedTableData]="dataToTable"></app-component2>
+    </div>
+</div>
