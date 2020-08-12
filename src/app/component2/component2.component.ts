@@ -5,6 +5,8 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { RegionService } from '../services/region.service';
+
 
 @Component({
   selector: 'app-component2',
@@ -13,20 +15,14 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class Component2Component implements OnInit {
   dataSource: any
-  recordCount: any;
-  displayedColumns: string[] = ['name', 'capital', 'population', 'currencies', 'flag'];
+  displayedColumns: string[] = ['name', 'branch', 'Watchers'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @Input() receivedTableData: any;
-  constructor() { }
+  constructor(private regionService: RegionService) { }
 
   ngOnInit(): void {
+   this.dataSource = this.regionService.getUserRepos()
 
   }
-
-  sendToChild() {
-    this.dataSource = this.receivedTableData
-  }
-
 
 }
